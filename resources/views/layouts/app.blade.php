@@ -27,10 +27,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-6 top-header-left">
                 <div class="drop">
                     <div class="box">
-                        <select id="money" tabindex="4" class="dropdown ">
+                        <select id="money"  tabindex="4" class="dropdown ">
                             <option value="" class="label">Dollar :</option>
-                            <option value="1">Dollar</option>
-                            <option value="2">Euro</option>
+                            @foreach($money as $m)
+                                <option value="{{ $m->id }}" >{{ $m->title }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="box1">
@@ -317,7 +318,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <!--dropdown-->
 <script src="{{ asset('js/jquery.easydropdown.js') }}"></script>
-
+<script>
+    let currency=null;
+    $('#money').change(function () {
+        window.location='/?currency='+$(this).val();
+        console.log($(this).val());
+    });
+    function changedCuurency(){
+        currency=$('#money').val();
+        window.location=`/?currency=${currency}`
+    }
+</script>
 <!--End-slider-script-->
 </body>
 </html>

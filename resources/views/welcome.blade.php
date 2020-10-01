@@ -60,9 +60,18 @@
                                     <p>Explore Now</p>
                                     <h4>
                                         <a class="item_add" href="#"><i></i></a>
-                                        <span class=" item_price">$ {{ $product->price }}</span>
+                                        @if($currency)
+                                                <span class=" item_price">$ {{ $product->price*$currency->value }}</span>
+                                            @else
+                                                <span class=" item_price">$ {{ $product->price }}</span>
+
+                                        @endif
                                         @if($product->old_price)
-                                            <span><small><del>{{ $product->old_price }}</del></small></span>
+                                            @if($currency)
+                                                <span><small><del>{{ $product->old_price*$currency->value }}</del></small></span>
+                                            @else
+                                                <span><small><del>{{ $product->old_price }}</del></small></span>
+                                            @endif
                                         @endif
                                     </h4>
                                 </div>
