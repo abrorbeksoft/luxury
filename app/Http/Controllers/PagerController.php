@@ -3,34 +3,61 @@
 namespace App\Http\Controllers;
 
 
+use App\Brand;
 use App\Currency;
 use App\Product;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PagerController extends Controller
 {
+
+
     public function home(Request $request)
     {
-        if ($request->currency)
-        {
-            $id=$request->currency;
-            $currency=Currency::find($id);
-            if ($currency)
-            {
-                $brands=DB::table("brands")->limit(3)->get();
-                $hitProducts=Product::where([['hit','1'],['status','1']])->limit(8)->get();
+        $this->setDefaults();
+        $defaultCurrency=Currency::where('code',Cookie::get('currency'))->first();
 
-                return view('welcome',['currency'=>$currency,'products'=>$hitProducts,'brands'=>$brands]);
-            }
-            else
-            {
-
-            }
-        }
-        $brands=DB::table("brands")->limit(3)->get();
-        $hitProducts=Product::where([['hit','1'],['status','1']])->limit(8)->get();
-        return view("welcome",['brands'=>$brands,'products'=>$hitProducts]);
+        $brands=Brand::all();
+        $curencies=Currency::all();
+        $hitProducts=Product::where([['status','1'],['hit','1']])->limit(8)->get();
+        return view("welcome",['brands'=>$brands,
+            'hitProducts'=>$hitProducts,'currencies'=>$curencies,
+            'defaultCurrency'=>$defaultCurrency
+        ]);
     }
 
+    public function single(Request $request,$single)
+    {
+        $this->setDefaults();
+        $curencies=Currency::all();
+
+        return view('single',['currencies'=>$curencies]);
+    }
+
+    public function men()
+    {
+        return view('men');
+    }
+
+    public function women()
+    {
+        return view('women');
+    }
+
+    public function kids()
+    {
+        return view('kids');
+    }
+
+
+    public function blog()
+    {
+        return view('blog');
+    }
+
+    public function contact()
+    {
+        return view('contct');
+    }
 }

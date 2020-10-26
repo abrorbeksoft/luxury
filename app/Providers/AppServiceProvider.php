@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Currency;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
@@ -28,7 +30,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         \view()->share('money',Currency::all());
-
-
+        
     }
 }
