@@ -11,7 +11,10 @@ return [
     'kids'=>'Kids',
     'blog'=>'Blog',
     'contact'=>'Contact',
-    'search'=>'Search'
+    'search'=>'Search',
+    'login'=>'Login',
+    'register'=>"Registrate"
+
 ];
 
 

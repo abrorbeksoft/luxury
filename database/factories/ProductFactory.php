@@ -14,7 +14,7 @@ $factory->define(Product::class, function (Faker $faker) {
         "old_price"=>$faker->numberBetween(230,600),
         "status"=>"1",
         "keywords"=>$faker->sentence(7),
-        "description"=>$faker->sentence(7),
+        "description"=>$faker->text(250),
         "img"=>"images/p-1.png",
         "hit"=>"1",
         "category_id"=>1,

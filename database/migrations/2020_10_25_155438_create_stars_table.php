@@ -15,6 +15,9 @@ class CreateStarsTable extends Migration
     {
         Schema::create('stars', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->integer('stars');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

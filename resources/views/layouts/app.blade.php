@@ -52,7 +52,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
             <div class="col-md-6 top-header-left">
+
+                @auth
                 <div class="cart box_1">
+                    <div class="cart box_1 grid">
+                        <ul class="memenu skyblue">
+                            <li class="active">
+
+                            <li class="grid">
+                                <div  style="background-color:white; padding: 5px 10px; margin-left: 10px; border:1px solid white; border-radius: 100%;">U</div>
+                                <div style="padding: 10px; width: 70px;" class="mepanel">
+                                    <div onclick="event.preventDefault(); document.getElementById('logout').submit()">Logout</div>
+                                    <form id="logout" style="display: none" action="{{ route('logout') }}" method="post">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>   
+                        
+                        </ul>
+                    </div>
                     <a href="checkout.html">
                         <div class="total">
                             <span class="simpleCart_total"></span></div>
@@ -61,6 +79,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
                     <div class="clearfix"> </div>
                 </div>
+
+                @endauth
             </div>
             <div class="clearfix"></div>
         </div>
@@ -213,6 +233,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
                         <li class="grid"><a href="contact.html">{{ __('home.contact') }}</a>
                         </li>
+                        @guest
+                            <li class="grid"><a href="{{ route('login') }}">{{ __('home.login') }}</a></li>
+                            <li class="grid"><a href="{{ route('register')}}">{{ __('home.register') }}</a></li>
+                        @endguest
+
                     </ul>
                 </div>
                 <div class="clearfix"> </div>
@@ -378,10 +403,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     $("#currency").change(function () {
           console.log($(this));
         switch ($(this).val())
-        {
-            case '1' : window.location='/currency?currency=UAH';  break;
-            case '2' : window.location='/currency?currency=USD'; break;
-            case '3' : window.location='/currency?currency=EUR'; break;
+            {
+            case '1' : window.location='/currency?currency=USD'; break;
+            case '2' : window.location='/currency?currency=EUR'; break;
+            case '3' : window.location='/currency?currency=UAH';  break;
             default :  break;
         }
     })

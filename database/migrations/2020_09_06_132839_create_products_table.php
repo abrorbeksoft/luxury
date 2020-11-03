@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->unsignedFloat("old_price");
             $table->enum("status",[0,1]);
             $table->string("keywords");
-            $table->string("description");
+            $table->text("description");
             $table->string("img");
             $table->enum("hit",[0,1]);
             $table->unsignedBigInteger("category_id");

@@ -4,6 +4,8 @@
 @section('banner')
 @endsection
 
+
+
 @section('content')
 <!--start-breadcrumbs-->
 <div class="breadcrumbs">
@@ -26,22 +28,19 @@
                     <div class="col-md-5 single-top-left">
                         <div class="flexslider">
                             <ul class="slides">
-                                <li data-thumb="{{ asset('storage/images/s-1.jpg') }}">
-                                    <div class="thumb-image"> <img src="{{ asset('storage/images/s-1.jpg') }}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-                                </li>
-                                <li data-thumb="{{ asset('storage/images/s-2.jpg') }}">
-                                    <div class="thumb-image"> <img src="{{ asset('storage/images/s-2.jpg') }}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-                                </li>
-                                <li data-thumb="{{ asset('storage/images/s-3.jpg') }}">
-                                    <div class="thumb-image"> <img src="{{ asset('storage/images/s-3.jpg') }}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-                                </li>
+                                @foreach($product->images as $img)
+                                    <li data-thumb="{{ asset('storage/images/'.$img->img) }}">
+                                        <div class="thumb-image"> <img src="{{ asset('storage/images/'.$img->img) }}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+                                    </li>
+                                @endforeach
+
                             </ul>
                         </div>
 
                     </div>
                     <div class="col-md-7 single-top-right">
                         <div class="single-para simpleCart_shelfItem">
-                            <h2>Lorem Ipsum</h2>
+                            <h2>{{ $product->title }}</h2>
                             <div class="star-on">
                                 <ul class="star-footer">
                                     <li><a href="#"><i> </i></a></li>
@@ -57,8 +56,8 @@
                                 <div class="clearfix"> </div>
                             </div>
 
-                            <h5 class="item_price">$ 95.00</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                            <h5 class="item_price">$ {{ $product->price }}</h5>
+                            <p>{{ $product->description }}</p>
                             <div class="available">
                                 <ul>
                                     <li>Color
@@ -90,43 +89,43 @@
                     </div>
                     <div class="clearfix"> </div>
                 </div>
-                <div class="tabs">
-                    <ul class="menu_drop">
-                        <li class="item1"><a href="#"><img src="{{ asset('images/arrow.png') }}" alt="">Description</a>
-                            <ul>
-                                <li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
-                                <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
-                                <li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
-                            </ul>
-                        </li>
-                        <li class="item2"><a href="#"><img src="{{ asset('storage/images/arrow.png') }}" alt="">Additional information</a>
-                            <ul>
-                                <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
-                                <li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
-                            </ul>
-                        </li>
-                        <li class="item3"><a href="#"><img src="{{ asset('storage/images/arrow.png') }}" alt="">Reviews (10)</a>
-                            <ul>
-                                <li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
-                                <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
-                                <li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
-                            </ul>
-                        </li>
-                        <li class="item4"><a href="#"><img src="{{ asset('storage/images/arrow.png') }}" alt="">Helpful Links</a>
-                            <ul>
-                                <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
-                                <li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
-                            </ul>
-                        </li>
-                        <li class="item5"><a href="#"><img src="{{ asset('storage/images/arrow.png') }}" alt="">Make A Gift</a>
-                            <ul>
-                                <li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
-                                <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
-                                <li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                {{--<div class="tabs">--}}
+                    {{--<ul class="menu_drop">--}}
+                        {{--<li class="item1"><a href="#"><img src="{{ asset('images/arrow.png') }}" alt="">Description</a>--}}
+                            {{--<ul>--}}
+                                {{--<li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>--}}
+                                {{--<li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>--}}
+                                {{--<li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+                        {{--<li class="item2"><a href="#"><img src="{{ asset('storage/images/arrow.png') }}" alt="">Additional information</a>--}}
+                            {{--<ul>--}}
+                                {{--<li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>--}}
+                                {{--<li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+                        {{--<li class="item3"><a href="#"><img src="{{ asset('storage/images/arrow.png') }}" alt="">Reviews (10)</a>--}}
+                            {{--<ul>--}}
+                                {{--<li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>--}}
+                                {{--<li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>--}}
+                                {{--<li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+                        {{--<li class="item4"><a href="#"><img src="{{ asset('storage/images/arrow.png') }}" alt="">Helpful Links</a>--}}
+                            {{--<ul>--}}
+                                {{--<li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>--}}
+                                {{--<li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+                        {{--<li class="item5"><a href="#"><img src="{{ asset('storage/images/arrow.png') }}" alt="">Make A Gift</a>--}}
+                            {{--<ul>--}}
+                                {{--<li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>--}}
+                                {{--<li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>--}}
+                                {{--<li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
                 <div class="latestproducts">
                     <div class="product-one">
                         <div class="col-md-4 product-left p-left">

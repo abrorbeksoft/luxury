@@ -29,10 +29,11 @@ class PagerController extends Controller
 
     public function single(Request $request,$single)
     {
+        $product=Product::where('alias',$single)->first();
         $this->setDefaults();
-        $curencies=Currency::all();
 
-        return view('single',['currencies'=>$curencies]);
+        $curencies=Currency::all();
+        return view('single',['currencies'=>$curencies,'product'=>$product]);
     }
 
     public function men()
